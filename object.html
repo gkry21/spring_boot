@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initiol-scale=1.0">
+	<meta http-equiv="X-UA-Compatible"content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	window.onload =function(){
+		function Person(name, gender){
+			let _name = name
+			let _gender = gender
+			let _age
+			
+			person.prototype.getName = function(){return _name}
+			person.prototype.getGender = function(){return _gender}
+			person.prototype.setAge = function(age){_age = age}
+			person.prototype.getAge = function(){return _age}
+			person.prototype.toString = function(){
+				return `${person.getName()}(${person.getGender()})${person.getAge()}세`
+			}
+		}
+		let person = new Person('이은지','여')
+		person.setAge('20')
+		// alert(`${person.getName()}(${person.getGender()})${person.getAge()}세`)
+	}
+	</script>
+	
+</body>
+</html>
