@@ -1,40 +1,35 @@
-function InputText(){
-	this.make = function(){
+const compo = {
+	div(id) {
+		const div = document.createElement('div')
+		div.setAttribute('id', id)
+		div.setAttribute('style', 'border : 1px solid black')
+		// div.textContent = text
+		return div
+	},
+	inputText(id, type) {
 		const input = document.createElement('input')
-		input.setAttribute('type','text')
-		input.setAttribute('id','val')
+		input.setAttribute('type', type)
+		input.setAttribute('id', id)
 		return input
-	}
-}
-function InputButton(){
-	this.make = function(){
+	},
+	inputButton(id, type, val) {
 		const input = document.createElement('input')
-		input.setAttribute('type','button')
-		input.setAttribute('value','버튼')
-		input.setAttribute('id','btn')
+		input.setAttribute('type', type)
+		input.setAttribute('value', val)
+		input.setAttribute('id', id)
 		return input
+	},
+	br() {
+	return document.createElement('br')
 	}
 }
-function Br(){
-	this.make = function(){
-		const br = document.createElement('br')
-		return br
-	}
-}
-function Func02(){
-	this.play = function(){
-		if(input == undefined || input == null || input == ''){
-			alert('텍스트 필드를 입력하세요')
-		}else{
-			alert((input.value !== '') ? input.value : '먼저 입력하시오'); input.focus() //;는 한 줄로 할 때 사용. 만약 ; 생략할거면 줄 바꿔주면 됨!
-		}
-		choice.value = 0
-	}
-}
-function Factory(type){ //팩토리 패턴
-	switch(type){
-		case 'inputText' : return new InputText()
-		case 'inputButton' : return new InputButton()
-		case 'br' : return new Br()
-	}
-}
+
+
+// function Factory(type) {
+// 	switch (type) {
+// 		case 'inputText': return new InputText() //return을 바로 타기 때문에 break 안걸음!
+// 		case 'inputButton': return new InputButton()
+// 		case 'br': return new Br()
+// 		case 'div': return new Div()
+// 	}
+// }

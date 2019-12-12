@@ -1,40 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<script src="Component.js"></script>
-	<script src="VendingMachine.js"></script>
 	<script src="VendingMachineService.js"></script>
+	<script src="VendingMachine.js"></script>
+	<script src="VendingMachineUtil.js"></script>
 </head>
+
 <body>
 	<div id="box">
-공유하는 프로퍼티 : change, itemNo,itemNoList,itemList
-공유하는 메소드 :
-동전투입 : insertCoin(coin)
-상품선택 : selectItem(itemNo, quantity)
-잔액반환 : returnChange()
-주문처리 : handleOrder(quantity, price, itemName)
-</div>
-<script>
-window.onload=function(){
-	const inputText = new Factory('inputText')
-	const inputButton = new Factory('inputButton')
-	const br = new Factory('br')
-	const box = document.getElementById('box')
-	box.remove()
-	document.body.appendChild(inputText.make())
-	document.body.appendChild(br.make())
-	document.body.appendChild(inputButton.make())
-	const btn = document.getElementById('btn')
-	btn.addEventListener('click', function(){
-		const val = document.getElementById('val')
-		const vms = new VendingMachineService()
-		vms.insertCoin('클릭성공'+val.value)
-	})
-}
-</script>
+		공유하는 프로퍼티 : change, itemNo, itemNoList, itemList
+		공유하는 메소드 :
+		동전투입 : insertCoin(coin)
+		상품선택 : selectItem(itemNo, quantity)
+		잔액반환 : returnChange()
+		주문처리 : handleOrder(quantity, price, itemName)
+	</div>
+	<script>
+		window.onload = function () {
+			const inputButton = new Factory('inputButton')
+			const br = new Factory('br')
+			const box = document.getElementById('box')
+			box.textContent = ''
+			box.appendChild(compo.inputText('money', 'text'))
+			box.appendChild(compo.br())
+			box.appendChild(compo.inputButton('btn', 'button', '동전투입'))
+			/* const div = new Factory('div')
+			document.body.appendChild(div.make('box'))
+			const box = document.getElementById('box')
+			box.body.appendChild(inputText.make())
+			box.body.appendChild(br.make())
+			box.body.appendChild(inputButton.make()) */
+			btn.addEventListener('click', function () {
+				const money = document.getElementById('money')
+				const vms = new VendingMachineService()
+				vms.insertCoin(money.value)
+				box.innerHTML = ''
+				const div = new Factory('div')
+				box.appendChild(div.make('coke'))
+				const coke = document.getElementById('coke')
+				coke.textContent = '1. 콜라 800원'
+				box.appendChild(div.make('cider'))
+				const cider = document.getElementById('cider')
+				cider.textContent = '2. 사이다 700원 '
+				box.appendChild(div.make('juice'))
+				const juice = document.getElementById('juice')
+				juice.textContent = '3. 주스 1000원'
+				const inputText = new Factory('inputText')
+				const inputButton = new Factory('inputButton')
+				const br = new Factory('br')
+				box.appendChild(inputText.make('menu', 'text'))
+				box.appendChild(br.make())
+				box.appendChild(inputButton.make('btn', 'button', '메뉴선택'))
+				// const list = new Looping()
+				/* list.forTest()
+				list.foreach()
+				list.map()
+				list.find()
+				list.reduce()
+				list.filter() */
+				// alert(list.forTest([4,9,5,2,7,6]))
+				// alert(list.filter([23,29,24,22,27,26]))
+				// alert(list.map([23,29,24,22,27,26]))
+				// alert(list.find([4,12,16,20]))
+				/* 	alert(list.find2([{ id: 4, name: '사' },
+										{ id: 5, name: '오' },
+										{ id: 6, name: '육' },
+										{ id: 7, name: '칠' }], 8)) */
+				// alert(list.reduce([1,2,3,4,5]))
+				/* alert(list.ofTest([{ id: 4, name: '사' },
+				{ id: 5, name: '오' },
+				{ id: 6, name: '육' },
+				{ id: 7, name: '칠' }])) */
+				// alert(list.fromTest([1, 2, 3]))
+				// alert(list.argumentsTest([4,5,6,7,8]))
+				// alert(list.joinTest('하이염','우린','칭구칭구'))
+				// alert(list.sortTest('a','b','c'))
+				// alert(list.reverseTest('a','b','c'))
+				/* alert(list.todos([
+					{ id: 4, content: 'JavaScript' },
+					{ id: 1, content: 'HTML' },
+					{ id: 2, content: 'CSS' }])) */
+
+			})
+		}
+	</script>
 </body>
+
 </html>
