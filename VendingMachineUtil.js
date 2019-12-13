@@ -80,9 +80,22 @@ function Looping() {
 		// content를 기준으로 정렬
 		arr = todos.sort(compare('content'));
 		let temp = []
-		for(const item of arr){
+		for (const item of arr) {
 			temp.push(item.content)
 		}
 		return temp
+	}
+}
+function Util() {
+	this.empty = function () {
+		elem = [...arguments]
+		var e = document.querySelector(elem);
+
+		//e.firstElementChild can be used. 
+		var child = e.lastElementChild;
+		while (child) {
+			e.removeChild(child);
+			child = e.lastElementChild;
+		}
 	}
 }

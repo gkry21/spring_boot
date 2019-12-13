@@ -23,40 +23,28 @@
 	</div>
 	<script>
 		window.onload = function () {
-			const inputButton = new Factory('inputButton')
-			const br = new Factory('br')
 			const box = document.getElementById('box')
 			box.textContent = ''
 			box.appendChild(compo.inputText('money', 'text'))
 			box.appendChild(compo.br())
 			box.appendChild(compo.inputButton('btn', 'button', '동전투입'))
-			/* const div = new Factory('div')
-			document.body.appendChild(div.make('box'))
-			const box = document.getElementById('box')
-			box.body.appendChild(inputText.make())
-			box.body.appendChild(br.make())
-			box.body.appendChild(inputButton.make()) */
-			btn.addEventListener('click', function () {
-				const money = document.getElementById('money')
-				const vms = new VendingMachineService()
-				vms.insertCoin(money.value)
+			document
+			.getElementById('btn')
+			.addEventListener('click', function () {
+				service.insertCoin(document.getElementById('money').value)
 				box.innerHTML = ''
-				const div = new Factory('div')
-				box.appendChild(div.make('coke'))
-				const coke = document.getElementById('coke')
-				coke.textContent = '1. 콜라 800원'
-				box.appendChild(div.make('cider'))
-				const cider = document.getElementById('cider')
-				cider.textContent = '2. 사이다 700원 '
-				box.appendChild(div.make('juice'))
-				const juice = document.getElementById('juice')
-				juice.textContent = '3. 주스 1000원'
-				const inputText = new Factory('inputText')
-				const inputButton = new Factory('inputButton')
-				const br = new Factory('br')
-				box.appendChild(inputText.make('menu', 'text'))
-				box.appendChild(br.make())
-				box.appendChild(inputButton.make('btn', 'button', '메뉴선택'))
+				box.appendChild(compo.div('coke'))
+				document.getElementById('coke').textContent = '1. 콜라 800원'
+				box.appendChild(compo.div('cider'))
+				document.getElementById('cider').textContent = '2. 사이다 700원 '
+				box.appendChild(compo.div('juice'))
+				document.getElementById('juice').textContent = '3. 주스 1000원'
+				box.appendChild(compo.inputText('menu', 'text'))
+				box.appendChild(compo.br())
+				box.appendChild(compo.inputButton('btn', 'button', '메뉴선택'))
+				const menu = document.getElementById('menu')
+				const btn = document.getElementById('button')
+				
 				// const list = new Looping()
 				/* list.forTest()
 				list.foreach()
